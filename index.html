@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Countdown to April 28, 2026 at Noon ET</title>
+  <title>Countdown to June 3, 2026 at 11:20 AM ET</title>
+
   <style>
     :root {
       color-scheme: light dark;
@@ -116,25 +117,35 @@
     }
   </style>
 </head>
+
 <body>
   <main class="card">
     <h1>Countdown</h1>
-    <p>Time remaining until noon Eastern Time on April 28, 2026</p>
-    <div class="target">April 28, 2026 • 12:00 PM ET</div>
+
+    <p>
+      Time remaining until Wednesday, June 3, 2026 at 11:20 AM Eastern Time
+    </p>
+
+    <div class="target">
+      Wednesday, June 3, 2026 • 11:20 AM ET
+    </div>
 
     <section class="countdown" aria-label="Countdown timer">
       <div class="unit">
         <span class="value" id="days">0</span>
         <span class="label">Days</span>
       </div>
+
       <div class="unit">
         <span class="value" id="hours">0</span>
         <span class="label">Hours</span>
       </div>
+
       <div class="unit">
         <span class="value" id="minutes">0</span>
         <span class="label">Minutes</span>
       </div>
+
       <div class="unit">
         <span class="value" id="seconds">0</span>
         <span class="label">Seconds</span>
@@ -142,13 +153,16 @@
     </section>
 
     <div class="status" id="status">Calculating…</div>
-    <div class="footer">This page uses a fixed UTC target so it stays accurate across time zones.</div>
+
+    <div class="footer">
+      This page uses a fixed UTC target so it stays accurate across time zones.
+    </div>
   </main>
 
   <script>
-    // April 28, 2026 at 12:00 PM Eastern Time.
-    // In late April, Eastern Time is EDT (UTC-4), so the UTC time is 16:00:00.
-    const targetTime = new Date('2026-04-28T16:00:00Z').getTime();
+    // June 3, 2026 at 11:20 AM Eastern Time
+    // EDT = UTC-4, therefore 15:20 UTC
+    const targetTime = new Date('2026-06-03T15:20:00Z').getTime();
 
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
@@ -169,24 +183,28 @@
         hoursEl.textContent = '00';
         minutesEl.textContent = '00';
         secondsEl.textContent = '00';
+
         statusEl.textContent = 'The countdown has ended.';
         return;
       }
 
       const totalSeconds = Math.floor(diff / 1000);
+
       const days = Math.floor(totalSeconds / 86400);
       const hours = Math.floor((totalSeconds % 86400) / 3600);
       const minutes = Math.floor((totalSeconds % 3600) / 60);
       const seconds = totalSeconds % 60;
 
-      daysEl.textContent = String(days);
+      daysEl.textContent = days;
       hoursEl.textContent = pad(hours);
       minutesEl.textContent = pad(minutes);
       secondsEl.textContent = pad(seconds);
+
       statusEl.textContent = 'Counting down in real time.';
     }
 
     updateCountdown();
+
     setInterval(updateCountdown, 1000);
   </script>
 </body>
